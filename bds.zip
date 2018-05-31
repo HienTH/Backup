@@ -1,0 +1,710 @@
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+--
+-- Host: localhost    Database: bds
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
+  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content_type_id` int(11) NOT NULL,
+  `codename` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
+  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add permission',3,'add_permission'),(8,'Can change permission',3,'change_permission'),(9,'Can delete permission',3,'delete_permission'),(10,'Can add user',4,'add_user'),(11,'Can change user',4,'change_user'),(12,'Can delete user',4,'delete_user'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add user',7,'add_user'),(20,'Can change user',7,'change_user'),(21,'Can delete user',7,'delete_user'),(22,'Can add duan',8,'add_duan'),(23,'Can change duan',8,'change_duan'),(24,'Can delete duan',8,'delete_duan'),(25,'Can add servicenode',9,'add_servicenode'),(26,'Can change servicenode',9,'change_servicenode'),(27,'Can delete servicenode',9,'delete_servicenode'),(28,'Can add typeservice',10,'add_typeservice'),(29,'Can change typeservice',10,'change_typeservice'),(30,'Can delete typeservice',10,'delete_typeservice'),(31,'Can add loaiduan',11,'add_loaiduan'),(32,'Can change loaiduan',11,'change_loaiduan'),(33,'Can delete loaiduan',11,'delete_loaiduan'),(34,'Can add groupnode',12,'add_groupnode'),(35,'Can change groupnode',12,'change_groupnode'),(36,'Can delete groupnode',12,'delete_groupnode'),(37,'Can add typerealestate',13,'add_typerealestate'),(38,'Can change typerealestate',13,'change_typerealestate'),(39,'Can delete typerealestate',13,'delete_typerealestate'),(40,'Can add mod',14,'add_mod'),(41,'Can change mod',14,'change_mod'),(42,'Can delete mod',14,'delete_mod'),(43,'Can add realestatenode',15,'add_realestatenode'),(44,'Can change realestatenode',15,'change_realestatenode'),(45,'Can delete realestatenode',15,'delete_realestatenode'),(46,'Can add admin',16,'add_admin'),(47,'Can change admin',16,'change_admin'),(48,'Can delete admin',16,'delete_admin'),(49,'Can add coin',17,'add_coin'),(50,'Can change coin',17,'change_coin'),(51,'Can delete coin',17,'delete_coin'),(52,'Can add history',18,'add_history'),(53,'Can change history',18,'change_history'),(54,'Can delete history',18,'delete_history');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
+  KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_admin`
+--
+
+DROP TABLE IF EXISTS `companies_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_admin` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `rank` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `companies_admin_username_08051261_uniq` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_admin`
+--
+
+LOCK TABLES `companies_admin` WRITE;
+/*!40000 ALTER TABLE `companies_admin` DISABLE KEYS */;
+INSERT INTO `companies_admin` VALUES ('admin1','trung','sha256$C1WPB4vR$dec2eb13ab1d728ca52b666d7c32b54fa548097ffd3586576a35f533a48223c7',1,'Lê Trung'),('admin2','hung','sha256$62WNMAwX$ddc72ad47ca574e4d8cfc1c914c5d9450ee014f5f20c5ac99f08b7def78850e5',1,NULL);
+/*!40000 ALTER TABLE `companies_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_coin`
+--
+
+DROP TABLE IF EXISTS `companies_coin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_coin` (
+  `id` varchar(20) NOT NULL,
+  `coin` int(11) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `typereal` varchar(3000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_coin`
+--
+
+LOCK TABLES `companies_coin` WRITE;
+/*!40000 ALTER TABLE `companies_coin` DISABLE KEYS */;
+INSERT INTO `companies_coin` VALUES ('1',10,1,''),('2',20,3,''),('3',30,3,'');
+/*!40000 ALTER TABLE `companies_coin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_duan`
+--
+
+DROP TABLE IF EXISTS `companies_duan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_duan` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `address` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `type_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `intro` longtext COLLATE utf8_unicode_ci,
+  `pricefrom` double DEFAULT NULL,
+  `infoduan` longtext COLLATE utf8_unicode_ci,
+  `tiendo` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `huyen` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `tinh` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `xa` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `details_address` longtext COLLATE utf8_unicode_ci,
+  `thumbs` longtext COLLATE utf8_unicode_ci,
+  `modname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `timecreate` datetime(6) NOT NULL,
+  `timemodify` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `companies_duan_type_id_104198f9_fk_companies_loaiduan_id` (`type_id`),
+  CONSTRAINT `companies_duan_type_id_104198f9_fk_companies_loaiduan_id` FOREIGN KEY (`type_id`) REFERENCES `companies_loaiduan` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_duan`
+--
+
+LOCK TABLES `companies_duan` WRITE;
+/*!40000 ALTER TABLE `companies_duan` DISABLE KEYS */;
+INSERT INTO `companies_duan` VALUES ('0DB2E50A9D6A41FE','Khu căn hộ Vĩnh Lộc','Đường Hương lộ 80, xã Vĩnh Lộc A, Bình Chánh, Tp.HCM','loaiduan1',1,'Thông tin tổng quan dự án Khu căn hộ VĨnh Lộc thức xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu VĨNh Lộc, Hồ Chí Minḥ\nTổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,10.8087320327759,106.571517944336,'Bình Chánh','Hồ Chí Minh','Vĩnh Lộc',NULL,NULL,'16B651','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('152EB89AAE54442C','CT1 Trung Văn - Vinaconex 3','Đường Trung Văn, Xã Trung Văn, Nam Từ Liêm, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án CT1 Trung Văn - Vinaconex 3 hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị CT1 Trung Văn - Vinaconex 3Tổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9936695098877,105.778076171875,'Nam Từ Liêm','Hà Nội','Trung Văn',NULL,NULL,'mod10','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('2956060C61C140CA','HH1 Linh Đàm','Đường Linh Đường, Phường Hoàng Liệt, Hoàng Mai, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án HH1 Linh Đàm xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị mới HH1 Linh Đàm Tổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9647350311279,105.826362609863,'Hoàng Mai','Hà Nội','Hoàng Liệt',NULL,NULL,'mod2','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('5BB00D5F0D9649E4','Khu đô thị mới Dương Nội','Đường Tố Hữu, Phường La Khê, Hà Đông, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án Khu đô thị mới Dương Nội thức xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị mới Dương Nội\nTổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9719924926758,105.756340026855,'Hà Đông','Hà Nội','La Khê',NULL,NULL,'mod200','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('63AB0D377C1A409E','CT1 Trung Văn - Vinaconex 3','Đường Trung Văn, Xã Trung Văn, Nam Từ Liêm, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án CT1 Trung Văn - Vinaconex 3 hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị CT1 Trung Văn - Vinaconex 3Tổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9936695098877,105.778076171875,'Nam Từ Liêm','Hà Nội','Trung Văn',NULL,NULL,'mod10','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('8BDFDD510E0C4739','Gamuda tinh','Phố Yên Duyên, Phường Yên Sở, Hoàng Mai, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án Gamuda tinhthức xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị mới Gamuda tinhnTổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9698810577393,105.871681213379,'Hoàng Mai,','Hà Nội','Yên Sở',NULL,NULL,'mod3','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('B379F7C94DE640C7','Sky Park Residence','Đường Tôn Thất Thuyết, Phường Dịch Vọng Hậu, Cầu Giấy, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án Sky Park Residence xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị mới Sky Park Residence Tổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,21.0277194976807,105.78589630127,'Cầu Giấy','Hà Nội','Dịch Vọng Hậu',NULL,NULL,'16B651','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('B6A7CCE71E754B29','The Premier Hà Nội','Đường Tôn Thất Thuyết, Phường Dịch Vọng Hậu, Cầu Giấy, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án The Premier Hà Nộithức xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án The Premier Hà Nội\nTổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,21.0291118621826,105.784629821777,'Cầu Giấy','Hà Nội','Dịch Vọng Hậu',NULL,NULL,'16B651','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('D7493DD5611C4E42','HH1 Linh Đàm','Đường Linh Đường, Phường Hoàng Liệt, Hoàng Mai, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án HH1 Linh Đàm xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.',0,'Tên dự án Khu đô thị mới HH1 Linh Đàm Tổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,20.9647350311279,105.826362609863,'Hoàng Mai','Hà Nội','Hoàng Liệt',NULL,NULL,'16B651','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan1','C7 Giảng Võ','Đường Trần Huy Liệu, Phường Giảng Võ, Ba Đình, Hà Nội','loaiduan1',1,'Thông tin tổng quan dự án C7 Giảng Võ\nNhà C7 Giảng Võ là tòa nhà đầu tiên được xây lại với phương thức xã hội hóa nhà ở để thay thế cho những nhà tập thể cũ đã xuống cấp ở khu vực Giảng Võ. \nDự án nằm trong chuỗi hợp tác giữa Công ty CP Tư vấn Handic - Đầu tư và phát triển nhà Hà Nội với Công ty CP Đầu tư và Sản xuất Việt Hàn. Trong khi đó, Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36 thi công, Công ty cổ phần tư vấn xây dựng An Khánh chịu trách nhiệm tư vấn giám sát.\n \n- Tên dự án: Chung cư C7 Giảng Võ\n- Vị trí dự án: Đường Trần Huy Liệu, phường Giảng Võ, quận Ba Đình, TP.Hà Nội.\n- Chủ đầu tư: Công ty CP tư vấn, đầu tư và phát triển nhà Hà Nội - HANDIC\n- Đơn vị thi công: Công ty TNHH Nhà nước một thành viên đầu tư xây lắp thương mại 36\n- Đơn vị tư vấn: Công ty cổ phần tư vấn xây dựng An Khánh\n- Tổng mức đầu tư: 91 tỷ đồng\n- Diện tích khu đất: 1660,7 m2\n- Diện tích xây dựng: 653,9 m2\n- Quy mô: 17 tầng với 1 tầng hầm\n- Diện tích đất sân vườn và cây xanh: 1000m2\n- Tổng mức đầu tư 91 Tỷ đồng',1.5,'Tên dự án C7 Giảng Võ\nĐịa chỉĐường Trần Huy Liệu, Phường Giảng Võ, Ba Đình, Hà Nội\nTổng diện tích1.661 m²\nDiện tích xây dựng654 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàQuý I/2011\nQuy mô dự án17 tầng với 1 tầng hầm',NULL,21.027744,105.822208,'Ba Đình','Hà Nội','Giảng Võ',NULL,NULL,'mod2','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan10','Vườn Lài Village\r\n','Đường Vườn Lài, phường An Phú Đông, quận 12, Tp.HCM\n','loaiduan10',1,'Thông tin dự án Vườn Lài Village\r\nVườn Lài Village nằm trên đường Vườn Lài, phường An Phú Đông, quận 12, Tp.HCM. Dự án được phân lô khoa học, đa dạng diện tích, tận dụng tối đa diện tích cây xanh và diện tích sử dụng. Đây hứa hẹn sẽ là nơi an cư và đầu tư lý tưởng cho khách hàng.\r\n- Tên dự án: Vườn Lài Village\r\n- Chủ đầu tư: Công ty CP BĐS Linkhouse\r\n- Tổng diện tích: 2,370.4m2\r\n- Diện tích xây dựng: 1,602.4m2\r\n- Tỷ lệ xây dựng: 67,6%\r\n- Các loại diện tích: 52m2, 54m2, 58m2, 61m2, 62m2, 63m2, 64m2, 65m2, 66m2, 67m2, 68m2, 70m2, 72m2, 85m2, 96m2...',3.3,'Tên dự án Vườn Lài Village\r\nĐịa chỉĐường Vườn Lài, phường An Phú Đông, quận 12, Tp.HCM\r\nTổng diện tích2.370 m²\r\nDiện tích xây dựng1.602 m²\r\nLoại hình phát triểnBiệt thự liền kề',NULL,10.863539,106.690548,'Quận 12','Hồ Chí Minh','An Phú',NULL,NULL,'mod10','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan11','HC Golden City\r\n','Tổ 10, phường Bồ Đề, Long Biên, Hà Nội\r\n','loaiduan10',1,'Thông tin dự án HC Golden City\r\nHC Golden City (liền kề 319 Bồ Đề) thuộc tổ 10 phường Bồ Đề, quận Long Biên, Hà Nội. Dự án nằm ngay bên cạnh tuyến đường Nguyễn Văn Cừ, gần trung tâm Aeon, cách khu vực phố Cổ chưa tới 4km.\r\n- Tên dự án: HC Golden City\r\n- Chủ đầu tư: Công ty 319 Bộ Quốc phòng\r\n- Quy mô: Gồm gần 100 lô liền kề, biệt thự\r\n- Loại hình: Liền kề, Shophouse, căn hộ cao cấp, biệt thự cao cấp...',3,'Tên dự án HC Golden City\r\nChủ đầu tưCông ty xây dựng 319 Bộ Quốc phòng\r\nĐịa chỉTổ 10, phường Bồ Đề, Long Biên, Hà Nội\r\nLoại hình phát triểnBiệt thự liền kề\r\nGiá bán70 triệu/m²\r\nQuy mô dự ánGần 100 lô liền kề, biệt thự',NULL,21.037956,105.872865,'Long Biên','Hà Nội','Bồ Đề',NULL,NULL,'mod3','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan2','Hà Nội Aqua Central','Số 44 Yên Phụ, phường Trúc Bạch, quận Ba Đình, Hà Nội','loaiduan1',1,'Thông tin dự án Hà Nội Aqua Central\nHà Nội Aqua Central - 44 Yên Phụ là dự án chung cư cao 21 tầng với tổng cộng 238 căn hộ và penthouse. Các căn hộ tại dự án được lắp đặt đầy đủ nội thất gắn tường từ những thương hiệu nổi tiếng đến từ Hoa Kỳ, Nhật Bản và châu Âu với phong cách hài hòa, bố cục sang trọng, màu sắc trang nhã.\nChung cư 44 Yên Phụ được thiết kế vườn cảnh trong các căn hộ đem tới không gian tươi mát, gần gũi thiên nhiên, ngập tràn gió trời và ánh nắng, không gian sống vô cùng tinh tế thể hiện tích cách con người và văn hóa đặc trưng của Phố cổ Hà Nội.\n- Tên dự án: Hà Nội Aqua Central - chung cư 44 Yên Phụ\n- Loại hình: Tòa nhà hỗn hợp văn phòng, thương mại dịch vụ khách sạn và căn hộ thương mại cao cấp\n- Chủ đầu tư: Công ty CP Tháp nước Hà Nội\n- Đơn vị thi công: Sông Đà 207 và Long Giang\n- Tổng diện tích: 6.468m2\n- Mật độ xây dựng: 50.6%\n- Quy mô: Tòa nhà 21 tầng, trong đó:\n+ Tầng hầm: 3 tầng hầm, tổng diện tích 9894m2\n+ Tầng 1-3: Trung tâm thương mại\n+ Tầng 4 -20: Căn hộ thương mại (tầng 21A-21B: căn Penthouse)\n- Thời gian khởi công: 08/2016\n- Dự kiến hoàn thành: 10/2018',2,'Tên dự án Hà Nội Aqua Central\nChủ đầu tưCông ty CP Tháp nước Hà Nội\nĐịa chỉSố 44 Yên Phụ, phường Trúc Bạch, quận Ba Đình, Hà Nội\nTổng diện tích6.468 m²\nLoại hình phát triểnCăn hộ, Chung cư\nBàn giao nhàTháng 10/2018\nGiá bán60 triệu/m²\nQuy mô dự ánTòa nhà 21 tầng nổi và 3 tầng hầm',NULL,21.047574,105.809298,'Ba Đình','Hà Nội','Trúc Bạch',NULL,NULL,'mod3','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan3','TRÚC BẠCH BUILDING','141 Hoàng Hoa Thám, Phường Nghĩa Đô, Cầu Giấy, Hà Nội','loaiduan2',1,'HAREC Building là một tòa nhà cho thuê văn phòng hạng B, được trang bị hệ thống cơ sở hạ tầng hiện đại và quản lý chuyên nghiệp. Với trang thiết bị đồng bộ, công nghệ thông tin hiện đại, nội thất đẹp tràn đầy ánh sáng tự nhiên, mỗi tầng rộng 735 m2 rất tiện lợi để làm văn phòng cho các công ty trong và ngoài nước.\nDự án là một trong những rất ít tòa nhà tại Hà Nội có 2 tầng hầm làm nơi để xe với hai cửa ra, vào riêng biệt. Tòa nhà 15 tầng với tổng diện tích thuê 9000m2 được trang bị đầy đủ tiện nghi, hệ thống báo khói, chữa cháy tự động, hệ thống camera hiện đại, điều hòa trung tâm, máy phát dự phòng và đảm bảo các quy định về an ninh, an toàn. Hệ thống giao thông nội bộ xung quanh tòa nhà tạo nên một không gian kiến trúc độc lập, trang nhã thuận tiện, đủ khả năng đáp ứng nhu cầu đa dạng về thuê văn phòng.\nNhững lợi thế cạnh tranh:\n- Quản lý bởi công ty nổi tiếng Quốc tế chuyên nghiệp SAVILLS\n- Địa thế tốt, vị trí thuận lợi, ở gần các ngân hàng lớn trung tâm thương mại, hội chợ\n- Giao thông thuận tiện, hai làn đường\n- Quang cảnh đẹp, môi trường tốt, không gian thoáng đãng\n- Giá thuê hấp dẫn\n- Dịch vụ chuyên nghiệp',2.5,'Trúc Bạch Building\n141 Hoàng Hoa Thám, Phường Ngọc Hà, Ba Đình, Hà Nội\nGiá từ: Đang cập nhật\nChủ đầu tư: Công ty CP Đầu tư Trúc Bạch\nDiện tích: Đang cập nhật\nTiến độ: Đã hoàn thành',NULL,21.048715,105.839746,'Cầu Giấy','Hà Nội','Nghĩa Đô',NULL,NULL,'mod10','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan4','ROSE GARDEN','Đống Đa, Hà Nội','loaiduan2',1,'Rose Garden Residences tọa lạc tại 170 Ngọc Khánh, phường Giảng Võ, Ba Đình, Hà Nội. Dự án là một khách sạn gồm các căn hộ tự phục vụ nằm cách Khu Phố Cổ ở TP. Hà Nội 10 phút lái xe, chỉ với 8 phút để đi đến Hồ Tây.',3,'Tên dự án Rose Garden\nĐịa chỉ170 Ngọc Khánh, Phường Giảng Võ, Ba Đình, Hà Nội\nTổng diện tích2.650 m²\nLoại hình phát triểnCao ốc văn phòng\nBàn giao nhà2013\nQuy mô dự án1 block 17 tầng',NULL,21.025043,105.818785,'Đống Đa','Hà Nội','Ngọc Khánh',NULL,NULL,'mod10','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan5','LePARC by Gamuda','Đường Pháp Vân, Phường Yên Sở, Hoàng Mai, Hà Nội','loaiduan3',1,'Thông tin dự án LePARC by Gamuda\nLePARC by Gamuda là 1 trong 4 dự án con của Gamuda City. Đây là khu bán lẻ đầu tiên do Gamuda Land đầu tư phát triển ở Việt Nam. Dự án sở hữu vị trí chiến lược cửa ngõ phía Nam Thủ đô, ngay sát đường cao tốc trên cao và đường vành đai 3, cách trung tâm TP. Hà Nội 10km về phía Nam.\nLà trái tim của Gamuda City, LePARC by Gamuda có cảnh quan xanh tươi, chỉ cách công viên Yên Sở với diện tích lớn tới 320 ha vài bước chân, nơi được coi là lá phổi xanh của thành phố. Từ dự án, cư dân dễ dàng kết nối với những khu vực lân cận của Hà Nội và những tỉnh phía Bắc.\n- Tên chính thức: LePARC by Gamuda\n- Loại hình: Tổ hợp khu vui chơi giải trí mua sắm và thư giãn trong không gian xanh của công viên Yên Sở\n- Chủ đầu tư: Gamuda Land Việt Nam\n- Đơn vị tư vấn bán hàng và tiếp thị độc quyền: CBRE (Việt Nam)\n- Tổng diện tích sử dụng: 8998m2\n- Thời hạn thuê: 5 năm\n- Số phòng: 214 đơn vị diện tích cho thuê\n- Diện tích đậu xe: 2000 xe\n- Thời gian hoạt động: Từ tháng 5/2016',3,'Tên dự án LePARC by Gamuda\nChủ đầu tưCông ty CP Gamuda Land Việt Nam\nĐịa chỉĐường Pháp Vân, Phường Yên Sở, Hoàng Mai, Hà Nội\nDiện tích xây dựng8.998 m²\nLoại hình phát triểnTrung tâm thương mại\nBàn giao nhàQuý IV/2016\nGiá bán16.8 triệu/m²\nQuy mô dự ánTổ hợp khu vui chơi giải trí',NULL,20.962948,105.85385,'Ba Đình','Hà Nội','Phúc Xá',NULL,NULL,'mod200','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan6','HDB Plaza','Xã Thanh Liệt, Thanh Trì, Hà Nội','loaiduan3',1,'Thông tin dự án HDB Plaza\r\nHDB Plaza nằm trên tuyến đường được xem là trung tâm thương mại và dịch vụ của huyện Thanh Trì, là cầu nối giao thông giữa Hà Đông với tuyến đường thuộc Quốc lộ 1A cũ. Dự án có vị trí vô cùng thuận lợi, dễ dàng kết nối với các vùng lân cận thông qua nhiều tuyến đường được quy hoạch mở rộng.\r\nVới đầy đủ các công năng như trung tâm thương mại, dịch vụ, văn phòng và căn hộ cao cấp, lại nằm trong khu vực có tốc độ đô thị hóa và sự tăng trưởng kinh tế rất nhanh của thành phố, HDB Plaza sẽ là một trong những địa điểm làm việc lý tưởng của nhiều doanh nghiệp.\r\nNằm trên diện tích 2 ha tại Hà Nội trên tuyến đường vành đai 3 của thành phố đang được đầu tư xây dựng với 3 toàn tháp cao trên 100m với đầy đủ các công năng như trung tâm thương mại, dịch vụ, văn phòng và căn hộ cao cấp. Đây là 1 dự án trọng điểm của Tập đoàn với tổng mức đầu tư hơn 1.500 tỷ đồng\r\n\r\n- Tên dự án: HDB Plaza\r\n- Chủ đầu tư: Công ty CP Tập đoàn HDB Việt Nam\r\n- Diện tích đất dự án: 20.479m2\r\n- Diện tích đất xây dựng: 8.800m2\r\n- Chiều cao: 30-33 Tầng, gồm 4 toàn tháp hiện đại',1.5,'Tên dự án HDB Plaza\nChủ đầu tưCông ty CP Tập đoàn HDB Việt Nam\nĐịa chỉXã Thanh Liệt, Thanh Trì, Hà Nội\nTổng diện tích20.479 m²\nLoại hình phát triểnTrung tâm thương mại\nQuy mô dự ánDự án gồm 4 tòa tháp hiện đại, mỗi tòa cao 30 - 33 tầng',NULL,21.016772,105.823392,'Thanh Trì','Hà Nội','Thanh Liệt',NULL,NULL,'mod200','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan7','Thuần Nghệ Green City','Thuần Nghệ, Sơn Tây, Hà Nội','loaiduan4',1,'Thông tin tổng quan dự án Thuần Nghệ Green City\r\nSở hữu vị trí đắc địa tại thị xã và được thiết kế theo phong cách tân cổ điển mang đến giá trị cao cho chủ nhân tương lai, Thuần Nghệ Green City được kỳ vọng sẽ trở thành khu đô thị đẳng cấp bậc nhât Sơn Tây. Dự án được đầu tư bởi Công ty CP Tập đoàn Xây dựng và Du lịch Bình Minh với quy mô 16 lô biệt thự và 231 lô liền kề.\r\n- Tên dự án: Khu đô thị nhà ở Thuần Nghệ  (Green City)\r\n- Chủ đầu tư: Công ty CP Tập đoàn Xây dựng và Du lịch Bình Minh\r\n- Mô hình: Khu đô thị phức hợp nhà ở kết hợp Trung tâm thương mại\r\n- Loại hình sản phẩm: Biệt thự đơn lập và liền kề\r\n- Vị trí: Thuần Nghệ, thị xã Sơn Tây, Hà Nội\r\n- Tổng diện tích dự án: 30.000m2\r\n- Tổng số sản phẩm: 247 lô\r\n- Biệt thự: gồm 16 lô (diện tích từ 250-400m2)\r\n- Liền kề: gồm 231 lô  (các loại diện tích: 75-85-90-102-120m2)\r\n- Giá bán 15.000.000 đồng/m2\r\n- Hình thức sở hữu: Vĩnh viễn',2.2,'Tên dự án Thuần Nghệ Green City\r\nĐịa chỉThuần Nghệ, Sơn Tây, Hà Nội\r\nTổng diện tích300.000 m²\r\nLoại hình phát triểnKhu đô thị mới\r\nGiá bán15 triệu/m²\r\nQuy mô dự án247 lô đất nền',NULL,21.136698,105.509634,'Sơn Tây','Hà Nội','Thuần Nghệ',NULL,NULL,'mod2','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan8','T&T Tower\r\n','120 Đường Định Công, Phường Định Công, Hoàng Mai, Hà Nội\r\n','loaiduan5',1,'Thông tin tổng quan dự án T&T Tower \r\nT&T Tower là dự án được đầu tư bởi Liên danh Công ty CP Tập đoàn T&T và Công ty CP Dịch vụ Vận tải Đường sắt với quy mô 3 tầng hầm, 6 tầng đế, 21 tầng căn hộ. \r\nVới chủ đầu tư uy tín có bề dày kinh nghiệm và khẳng định được vị thế trong giới bất động sản, dự án căn hộ cao cấp T&T Tower chắc chắn sẽ là sự lựa chọn lý tưởng cho những khách hàng đang tìm kiếm không gian sống đẳng cấp cao với chất lượng tuyệt hảo.\r\nVới sự đồng nhất trong thiết kế, lối kiến trúc mở, các căn hộ tại dự án khiến chủ nhân hoàn toàn yên tâm về không gian sống cũng như việc vận dụng các yếu tố phong thuỷ vào bài trí, thiết kế mà vẫn giữ được sự sang trọng và đẳng cấp.\r\n- Tên dự án: T&T Tower 120 Định Công\r\n- Chủ đầu tư: Liên danh Công ty CP Tập đoàn T&T và Công ty CP Dịch vụ Vận tải Đường sắt\r\n- Tư vấn thiết kế: Công ty CP Đầu tư & Tư vấn Công nghệ Xây dựng Archivina\r\n- Vị trí: Số 120 Định Công, phường Định Công, quận Hoàng Mai, Hà Nội\r\n- Diện tích khu đất: 7.958m2 \r\n- Diện tích xây dựng: 6.163m2\r\n- Diện tích đất mở đường quy hoạch: 1.795m2\r\n- Mật độ xây dựng: 60%\r\n- Quy mô: 3 tầng hầm, 6 tầng đế, 21 tầng căn hộ\r\n- Số lượng sản phẩm: 40 lô biệt thự liền kề với diện tích 80-100m2 đất và 300 căn hộ \r\n- Quy mô dân số: 1.000 người\r\n- Thời gian bàn giao dự kiến: Tháng 10/2018',1.8,'Tên dự án T&T Tower\r\nChủ đầu tưCông ty CP Tập đoàn T&T\r\nĐịa chỉ120 Đường Định Công, Phường Định Công, Hoàng Mai, Hà Nội\r\nTổng diện tích7.958 m²\r\nDiện tích xây dựng6.163 m²\r\nLoại hình phát triểnKhu phức hợp',NULL,20.98367,105.821986,'Hoàng Mai','Hà Nội','Định Công',NULL,NULL,'mod3','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('duan9','C.T Sphinx Golf Club & Residences\r\n','Quốc lộ 22, Tân Thông Hội, Huyện Củ Chi, TP.HCM','loaiduan7',1,'\r\nC.T Sphinx Golf Club & Residences tọa lạc trên quốc lộ 22, gần Cầu An Hạ, nằm trong vùng đất di sản 18 thôn vườn trầu, giáp ranh giữa Hóc Môn và Củ Chi. C.T Sphinx có 3 mặt là sông nước trong xanh, trải dài dọc sông Thầy Cai, con sông nối liền sông Sài Gòn với sông Vàm Cỏ Đông. Chỉ mất 30 phút di chuyển bằng ca-nô. Quý khách sẽ đến với C.T Sphinx – Sân Golf tuyệt đẹp và những biệt thự phong cách thiết kế Châu Âu.\r\n \r\n- Dự án: C.T Sphinx - sân Golf Nhân sư và khu Villas\r\n- Vị trí: Quốc lộ 22, Tân Thông Hội, Huyện Củ Chi, Tp.HCM.\r\n- Chủ đầu tư : Công ty TNHH Phát triển GS Củ Chi ( Thành viên Tập đoàn C.T Group)\r\n- Tổng diện tích: 200 ha\r\n- Tổng vốn đầu tư: 42 Triệu USD\r\n- Loại hình: Sân golf, Biệt thự',2.4,'Tên dự án C.T Sphinx Golf Club & Residences\r\nChủ đầu tưC.T Group\r\nĐịa chỉQuốc lộ 22, Tân Thông Hội, Huyện Củ Chi, TP.HCM\r\nTổng diện tích2.000.000 m²\r\nLoại hình phát triểnKhu nghỉ dưỡng, Sinh thái\r\nBàn giao nhàQuý II/2016\r\nQuy mô dự án200 căn biệt thự',NULL,10.927066,106.503961,'Củ Chi','Hồ Chí Minh','Tân Thông Hội',NULL,NULL,'mod2','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581'),('E2EBE889EF8549','Hà Nội Garden Villa (Hà Nội Garden City)','Phường Thạch Bàn, Long Biên, Hà Nội','loaiduan2',1,'Hà Nội Garden Villa Với trang thiết bị đồng bộ, công nghệ thông tin hiện đại, nội thất đẹp tràn đầy ánh sáng tự nhiên, mỗi tầng rộng 735 m2 rất tiện lợi để làm văn phòng cho các công ty trong và ngoài nước',2.5,'Giá từ: Đang cập nhật Chủ đầu tư: Công ty CP Đầu tư Trúc Bạch',NULL,21.0202102661133,105.920616149902,'Long Biên','Hà Nội','Thạch Bàn',NULL,NULL,'16B651','2017-12-24 03:53:03.893541','2017-12-24 03:53:03.996581');
+/*!40000 ALTER TABLE `companies_duan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_groupnode`
+--
+
+DROP TABLE IF EXISTS `companies_groupnode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_groupnode` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `details` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_groupnode`
+--
+
+LOCK TABLES `companies_groupnode` WRITE;
+/*!40000 ALTER TABLE `companies_groupnode` DISABLE KEYS */;
+/*!40000 ALTER TABLE `companies_groupnode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_history`
+--
+
+DROP TABLE IF EXISTS `companies_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `coin` int(11) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `user` varchar(20) NOT NULL,
+  `staff` varchar(20) NOT NULL,
+  `date` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_history`
+--
+
+LOCK TABLES `companies_history` WRITE;
+/*!40000 ALTER TABLE `companies_history` DISABLE KEYS */;
+INSERT INTO `companies_history` VALUES (1,20,1,'user1','mod2','2017-12-18 13:55:12.000000'),(2,20,1,'user1','mod2','2017-12-18 13:55:12.000000'),(3,20,0,'user1','mod2','2017-12-18 13:55:12.000000'),(4,20,0,'user1','mod2','2017-12-18 13:55:12.000000'),(5,20,0,'user1','mod2','2017-12-18 13:55:12.000000');
+/*!40000 ALTER TABLE `companies_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_loaiduan`
+--
+
+DROP TABLE IF EXISTS `companies_loaiduan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_loaiduan` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_loaiduan`
+--
+
+LOCK TABLES `companies_loaiduan` WRITE;
+/*!40000 ALTER TABLE `companies_loaiduan` DISABLE KEYS */;
+INSERT INTO `companies_loaiduan` VALUES ('loaiduan1','Căn hộ, Chung cư',''),('loaiduan10','Biệt thự, liền kề, nhà vườn',''),('loaiduan2','Cao ốc văn phòng',''),('loaiduan3','Trung tâm thương mại',''),('loaiduan4','Khu đô thị mới',''),('loaiduan5','Khu phức hợp',''),('loaiduan6','Nhà ở xã hội',''),('loaiduan7','Khu nghỉ dưỡng, Sinh thái',''),('loaiduan8','Khu công nghiệp',''),('loaiduan9','Dự án khác','');
+/*!40000 ALTER TABLE `companies_loaiduan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_mod`
+--
+
+DROP TABLE IF EXISTS `companies_mod`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_mod` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `birthday` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL,
+  `sex` tinyint(1) DEFAULT NULL,
+  `address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rank` tinyint(1) NOT NULL,
+  `type_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typemod` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `companies_mod_username_54b4a499_uniq` (`username`),
+  KEY `companies_mod_type_id_cbbbe5da_fk_companies_mod_id` (`type_id`),
+  CONSTRAINT `companies_mod_type_id_cbbbe5da_fk_companies_mod_id` FOREIGN KEY (`type_id`) REFERENCES `companies_mod` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_mod`
+--
+
+LOCK TABLES `companies_mod` WRITE;
+/*!40000 ALTER TABLE `companies_mod` DISABLE KEYS */;
+INSERT INTO `companies_mod` VALUES ('16B651','long','sha256$8Qf3MG0v$03c96a19509f10528846e8395fce24be3b515bec3845fa5aee26ce5dc1438202','long@gmail.com','0988111828','1995-09-19',1,0,'Hà Nội',0,'920EC2','Nguyễn Duy Long',0),('920EC2','hien','sha256$hiv2DN8B$99bd2c5718ceca4a3855ab41b195ed1a5737942ab70f97e92c1647750d485533','hienhd@gmail.com','0988111828','1995-09-19',1,1,'Hà Nội',1,NULL,'Hà ĐỨc Hiến',0),('C9BB1F','tu','sha256$ABrTncWD$07944bc23f433d1001f183acec947741d365cbbc00b45f231b6a4bbf1eae0bca','tunguyen@gmail.com','0988111828','1995-09-09',1,0,'Hà Nội',1,NULL,'Nguyễn Minh TÚ',1),('mod10','hiep','sha256$foMAUhmk$3074640dbcd07a46f5f67085b04030900c59e3d6010f44ca5b18fef2c27ddfa1','hiepbach@gmail.com','0918271271','1995-01-01',1,1,'Hà NỘi',0,'C9BB1F','Bạch Ngọc HIệp',1),('mod2','anh','sha256$4BBamosW$eaf9810fa140b828a7b2ea006155e39128f878b12b5c9c47d3a3b76530bcb56d','ngocanh@gmail.com','0988282727','1995-01-01',1,1,'Hà NỘi',0,'C9BB1F','Phạm Ngọc Anh',1),('mod200','hieu','sha256$Pr1gwmoT$2f9a15f653bff7b6948483cafff9ef44224121837b62ddca8991f94d98836ad0','phamhieu@gmail.com','0918271271','1995-01-01',1,1,'Hà NỘi',0,'920EC2','Phạm Trọng Hiếu',0),('mod3','tuan','sha256$LWOIUcFs$7051509bf2e3f1f6add26a013d4e8161ef67c35a4f3ead7e1d5a5f6313029efc','tuanvu@gmail.com','0991928382','',1,1,'',0,'920EC2','Vũ Quốc Tuấn',0);
+/*!40000 ALTER TABLE `companies_mod` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_realestatenode`
+--
+
+DROP TABLE IF EXISTS `companies_realestatenode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_realestatenode` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `price` double NOT NULL,
+  `area` double DEFAULT NULL,
+  `tinh` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `huyen` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `xa` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `duong` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `huong` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `sophongngu` int(11) NOT NULL,
+  `details` longtext COLLATE utf8_unicode_ci,
+  `status` tinyint(1) NOT NULL,
+  `tenlienhe` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `diachi` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
+  `dienthoai` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `rank` int(11) NOT NULL,
+  `timefrom` datetime(6) NOT NULL,
+  `timeto` datetime(6) NOT NULL,
+  `duanid_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `modid_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `userid_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typenode` tinyint(1) NOT NULL,
+  `address` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `details_address` longtext COLLATE utf8_unicode_ci,
+  `thumbs` longtext COLLATE utf8_unicode_ci,
+  `tenduan` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `panorama_image` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pricem2` double NOT NULL,
+  `rongduong` double NOT NULL,
+  `rongtien` double NOT NULL,
+  `sotang` int(11) DEFAULT NULL,
+  `tang` int(11) DEFAULT NULL,
+  `vip` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `companies_realestatenode_modid_id_f2bd9d4b_fk_companies_mod_id` (`modid_id`),
+  KEY `companies_realestate_type_id_e47930e3_fk_companies` (`type_id`),
+  KEY `companies_realestatenode_duanid_id_3c0ab73b_fk_companies_duan_id` (`duanid_id`),
+  KEY `companies_realestatenode_userid_id_4296d794_fk_companies_user_id` (`userid_id`),
+  CONSTRAINT `companies_realestate_type_id_e47930e3_fk_companies` FOREIGN KEY (`type_id`) REFERENCES `companies_typerealestate` (`id`),
+  CONSTRAINT `companies_realestatenode_duanid_id_3c0ab73b_fk_companies_duan_id` FOREIGN KEY (`duanid_id`) REFERENCES `companies_duan` (`id`),
+  CONSTRAINT `companies_realestatenode_modid_id_f2bd9d4b_fk_companies_mod_id` FOREIGN KEY (`modid_id`) REFERENCES `companies_mod` (`id`),
+  CONSTRAINT `companies_realestatenode_userid_id_4296d794_fk_companies_user_id` FOREIGN KEY (`userid_id`) REFERENCES `companies_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_realestatenode`
+--
+
+LOCK TABLES `companies_realestatenode` WRITE;
+/*!40000 ALTER TABLE `companies_realestatenode` DISABLE KEYS */;
+INSERT INTO `companies_realestatenode` VALUES ('42D57796F2','Bán nhà Riêng',0,0,-1,0,'HN','Ba Đình','','','',0,'',1,'ha quoc','','01688955695','quoc@gmail.com',1,'2017-08-12 00:00:00.000000','2017-10-14 00:00:00.000000',NULL,'mod3','typereal1','user1',1,'','',NULL,'',NULL,0,0,0,NULL,NULL,0),('78FB350CC4','Cần mua nhà riêng',0,0,-1,0,'HN','7','','','',0,'',0,'ha+quoc+hung','','01688955695','hung%40gmail.com',1,'2017-08-12 00:00:00.000000','2017-10-12 00:00:00.000000',NULL,'mod10','typereal1','user1',0,'','',NULL,'',NULL,0,0,0,NULL,NULL,0),('A74AE9E7F6E64A2','trvew',21.0026988983154,105.792427062988,2,0,'HN','Ba Đình','','','',2,'',1,'ha quoc','','01688955695','quoc@gmail.com',3,'2017-08-12 00:00:00.000000','2017-10-14 00:00:00.000000',NULL,'mod200','typereal1','user1',1,'','Trúc Bạch, Ba Đình, Hà Nội',NULL,'',NULL,0,0,0,NULL,NULL,0),('E44883FBEE','Cần thuê nhà',0,0,-1,0,'HN','7','','','',0,'',0,'ha+quoc+hung','','01688955695','hung%40gmail.com',1,'2017-08-12 00:00:00.000000','2017-10-12 00:00:00.000000',NULL,'16B651','typereal1','user1',0,'','',NULL,'',NULL,0,0,0,NULL,NULL,0),('node1','VINHOMES LIỄU GIAI METROPOLIS, MỘT SỐ CĂN ĐẸP CHÍNH CHỦ BÁN LẠI, CẬP NHẬT MỚI NHẤT NGÀY 16/11/2017',21.031885,105.813755,2.4,70,'Hà Nội','Ba Đình','Liễu Giai','Liễu Giai','Tây',2,'Gia re cam ket',1,'hung','Ha Noi','09121231','haquochung@gmail.com',2,'2017-08-12 00:00:00.000000','2017-08-30 00:00:00.000000','duan1','mod2','typereal1','user1',1,'Liễu Giai, Ba Đình, hà Nội',NULL,NULL,'',NULL,0,0,0,NULL,NULL,0),('node2','BÁN SUẤT MUA CĂN HỘ B6 GIẢNG VÕ, GIÁ 49TR/M2, CHỌN CĂN TẦNG ĐẸP 75-80-95-127M2. LH: 0984289885',21.027666,105.824105,0.7,900,'Hồ Chí Minh','Bình Chánh','Bình Lợi','2C','Đông',2,'Gia re cam ket',1,'hien','Ha Noi','09101231','haduchien@gmail.com',1,'2017-08-12 00:00:00.000000','2017-08-20 00:00:00.000000','duan2','mod3','typereal2','user2',1,'Bình Lợi, Bình Chánh, Hồ Chí Minh',NULL,NULL,'',NULL,0,0,0,NULL,NULL,0),('node3','CĐT Tháp nước bán suất ngoại giao Hà Nội Aqua Central, liên hệ CĐT: 09492158988\n',21.046274,105.844371,0.7,80.03,'Hà Nội','Ba Đình','Trúc Bạch','Yên Phụ','Nam',3,'Gia re cam ket',1,'hien','Ha Noi','09101231','haduchien@gmail.com',2,'2017-08-12 00:00:00.000000','2017-08-20 00:00:00.000000','duan4','mod3','typereal7','user2',1,'Trúc Bạch, Ba Đình, Hà Nội',NULL,NULL,'',NULL,0,0,0,NULL,NULL,0),('node5','PHÒNG KINH DOANH GOLDEN FIELD MỸ ĐÌNH, MỞ BÁN ĐỢT CUỐI, GIÁ TỪ 29TR/M2, TẶNG GÓI NỘI THẤT 60TR\n',21.030084,105.76747,3.5,135.01,'Hà Nội','Nam Từ Liêm','Mỹ Đình','','Đông',4,'Gia re cam ket',1,'hung','Ha Noi','09121231','haquochung@gmail.com',1,'2017-08-12 00:00:00.000000','2017-08-20 00:00:00.000000','duan2','mod2','typereal7','user1',0,'Mỹ Đình, Nam Từ Liêm, Hà Nội',NULL,NULL,'',NULL,0,0,0,NULL,NULL,0);
+/*!40000 ALTER TABLE `companies_realestatenode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_servicenode`
+--
+
+DROP TABLE IF EXISTS `companies_servicenode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_servicenode` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `details` longtext COLLATE utf8_unicode_ci,
+  `group` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `type_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `modname` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `timecreate` datetime(6) NOT NULL,
+  `timemodify` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `companies_servicenod_type_id_1f4f944f_fk_companies` (`type_id`),
+  CONSTRAINT `companies_servicenod_type_id_1f4f944f_fk_companies` FOREIGN KEY (`type_id`) REFERENCES `companies_typeservice` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_servicenode`
+--
+
+LOCK TABLES `companies_servicenode` WRITE;
+/*!40000 ALTER TABLE `companies_servicenode` DISABLE KEYS */;
+INSERT INTO `companies_servicenode` VALUES (1,'NHA Bo To',10.9143286,106.7134236,'Hay','Xa Hoi','typeservice2',NULL,'2017-12-27 11:22:20.439538','2017-12-31 18:59:06.000000'),(2,'Sieu thi Vin',13.12,52.001,'','Chug cu cao cap','typeservice2',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559'),(3,'Sieu thi Land',13.12,52.001,'','Chug cu cao cap','typeservice2',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559'),(4,'Truong Tieu Hoc XXY',13.12,52.001,'','Chug cu cao cap','typeservice3',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559'),(5,'Truong Hoc VQT',121,13.001,'Hay','Chug cu cao cap','typeservice1',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559'),(6,'Truong Hoc TVT',121,13.001,'Hay','Xa Hoi','typeservice1',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559'),(7,'Truong Hoc TVT',121,13.001,'Hay','Xa Hoi','typeservice1',NULL,'2017-12-27 11:22:20.439538','2017-12-27 11:22:20.504559');
+/*!40000 ALTER TABLE `companies_servicenode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_typerealestate`
+--
+
+DROP TABLE IF EXISTS `companies_typerealestate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_typerealestate` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `details` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_typerealestate`
+--
+
+LOCK TABLES `companies_typerealestate` WRITE;
+/*!40000 ALTER TABLE `companies_typerealestate` DISABLE KEYS */;
+INSERT INTO `companies_typerealestate` VALUES ('typereal1','Bán căn hộ chung cư','',1),('typereal10','Bán loại bất động sản khác','',1),('typereal11','Cho thuê căn hộ chung cư','',0),('typereal12','Cho thuê nhà riêng','',0),('typereal13','Cho thuê nhà mặt phố','',0),('typereal14','Cho thuê nhà trọ, phòng trọ','',0),('typereal15','Cho thuê văn phòng','',0),('typereal16','Cho thuê cửa hàng, ki ốt','',0),('typereal17','Cho thuê kho, nhà xưởng, đất','',0),('typereal18','Cho thuê loại bất động sản khác','',0),('typereal2','Bán nhà riêng','',1),('typereal3','Bán nhà biệt thự, liền kề','',1),('typereal4','Bán nhà mặt phố','',1),('typereal5','Bán đất nền dự án','',1),('typereal6','Bán đất','',1),('typereal7','Bán trang trại, khu nghỉ dưỡng','',1),('typereal8','Bán kho, nhà xưởng','',1);
+/*!40000 ALTER TABLE `companies_typerealestate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_typeservice`
+--
+
+DROP TABLE IF EXISTS `companies_typeservice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_typeservice` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_typeservice`
+--
+
+LOCK TABLES `companies_typeservice` WRITE;
+/*!40000 ALTER TABLE `companies_typeservice` DISABLE KEYS */;
+INSERT INTO `companies_typeservice` VALUES ('typeservice1','icon1','Trường học'),('typeservice10','icon10','Làm đẹp, spa'),('typeservice11','icon11','ATM, Ngân hàng'),('typeservice12','icon12','Các công ty dịch vụ'),('typeservice13','icon13','Các tiện ích khác'),('typeservice2','icon2','Bến xe, trạm xe'),('typeservice3','icon3','Công trình công cộng'),('typeservice4','icon4','Cơ sở y tế'),('typeservice5','icon5','Nhà hàng'),('typeservice6','icon6','Cơ quan hành chính'),('typeservice7','icon7','Khách sạn'),('typeservice8','icon8','TT thể thao, giải trí'),('typeservice9','icon9','Địa điểm mua sắm');
+/*!40000 ALTER TABLE `companies_typeservice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies_user`
+--
+
+DROP TABLE IF EXISTS `companies_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies_user` (
+  `id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sex` tinyint(1) NOT NULL,
+  `birthday` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `coin` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `companies_user_username_6870f74c_uniq` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies_user`
+--
+
+LOCK TABLES `companies_user` WRITE;
+/*!40000 ALTER TABLE `companies_user` DISABLE KEYS */;
+INSERT INTO `companies_user` VALUES ('3988E43301','doanh','sha256$J9Rku9SO$6e899175ad2284d0dac0ffb77a65de4920fe39ff016b3bfbac2b6da08f9b04a4','phandoanh@gmail.com','01688955295','Binh Dinh','BHome',1,'1995-09-09','60',1,1,'phan trong doanh~',''),('408C96A7B6','tuan','sha256$RT57V8Oq$48029272632e3cf7748dead8e189155da4541bd7a263d8837f9d474e93d02d2a','vuquoctuan@gmail.com','0928111828','Hà Nội','BHome',1,'1995-09-09','0',1,1,'vu quoc tuan',''),('51C09B04E8','duy','sha256$VW7XYtTA$797bcb104fb129dc88bc1c383a20b2abe7faa8600034ef6ca3f09290d0fb378d','phanduy@gmail.com','01688955295','Gia Lai','BHome',1,'1995-09-09','0',1,1,'phan trong doanh',''),('B892FB32E4','hiep','sha256$akeLWn1h$3c3a1ecc900f935c53d9000c0ab231e833f3685f5a1acbdc123c627d328b4aaa','bachngochiep@gmail.com','0917217271','Hà Nội','BHomes',1,'1995-01-01','0',1,1,'bach hiep',''),('user1','hung','sha256$Numwnh9z$9d2f6ab1fabf5d7809ecdf6cc6ce1ee54b809af51f32f2a28afdcf37926b458f','hung@gmail.com','01688955695','Binh Dinh','BHome',1,'1995-09-09','100',1,1,'ha quoc hung',''),('user2','hieu','sha256$g8GnR9TM$476103667706ac165ae3d2d2c197eb0b10040e93bafd21f0181f97d8a2205b80','phamtronghieu@gmail.com','0988111828','','BHome',1,'1995-09-09','50',1,1,'pham trong hieu','');
+/*!40000 ALTER TABLE `companies_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_admin_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_time` datetime(6) NOT NULL,
+  `object_id` longtext COLLATE utf8_unicode_ci,
+  `object_repr` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
+  KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `model` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(2,'auth','group'),(3,'auth','permission'),(4,'auth','user'),(16,'companies','admin'),(17,'companies','coin'),(8,'companies','duan'),(12,'companies','groupnode'),(18,'companies','history'),(11,'companies','loaiduan'),(14,'companies','mod'),(15,'companies','realestatenode'),(9,'companies','servicenode'),(13,'companies','typerealestate'),(10,'companies','typeservice'),(7,'companies','user'),(5,'contenttypes','contenttype'),(6,'sessions','session');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_migrations`
+--
+
+DROP TABLE IF EXISTS `django_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_migrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `applied` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+LOCK TABLES `django_migrations` WRITE;
+/*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-09-05 07:42:51.359406'),(2,'auth','0001_initial','2017-09-05 07:43:00.793839'),(3,'admin','0001_initial','2017-09-05 07:43:02.883930'),(4,'admin','0002_logentry_remove_auto_add','2017-09-05 07:43:03.052144'),(5,'contenttypes','0002_remove_content_type_name','2017-09-05 07:43:04.213838'),(6,'auth','0002_alter_permission_name_max_length','2017-09-05 07:43:05.186618'),(7,'auth','0003_alter_user_email_max_length','2017-09-05 07:43:06.235378'),(8,'auth','0004_alter_user_username_opts','2017-09-05 07:43:06.282471'),(9,'auth','0005_alter_user_last_login_null','2017-09-05 07:43:06.849735'),(10,'auth','0006_require_contenttypes_0002','2017-09-05 07:43:06.894564'),(11,'auth','0007_alter_validators_add_error_messages','2017-09-05 07:43:07.053009'),(12,'auth','0008_alter_user_username_max_length','2017-09-05 07:43:08.156521'),(13,'companies','0001_initial','2017-09-05 07:43:27.913952'),(14,'sessions','0001_initial','2017-09-05 07:43:28.471983'),(15,'companies','0002_auto_20170906_0126','2017-09-06 01:30:55.722914'),(16,'companies','0003_auto_20170906_0130','2017-09-06 01:30:57.469070'),(17,'companies','0004_auto_20170906_0141','2017-09-06 01:41:06.636713'),(18,'companies','0005_auto_20170907_1832','2017-09-07 18:32:24.054892'),(19,'companies','0006_auto_20170911_0724','2017-09-11 07:25:07.395691'),(20,'companies','0007_typeservice_type','2017-09-11 07:43:34.514902'),(21,'companies','0008_auto_20170911_0744','2017-09-11 07:44:19.577324'),(22,'companies','0009_auto_20170911_0932','2017-09-11 09:38:43.782470'),(23,'companies','0010_auto_20170911_0938','2017-09-11 09:38:43.838814'),(24,'companies','0007_auto_20171027_0040','2017-11-17 03:13:53.950001'),(25,'companies','0008_duan_status','2017-11-17 03:13:54.023446'),(26,'companies','0009_auto_20171117_0323','2017-11-17 03:26:59.124293'),(27,'companies','0010_auto_20171117_0334','2017-11-17 03:35:27.227588'),(28,'companies','0011_auto_20171117_0349','2017-11-17 04:06:01.190704'),(29,'companies','0012_merge_20171117_0404','2017-11-17 04:06:01.194775'),(30,'companies','0013_auto_20171117_0407','2017-11-17 04:07:23.104828'),(31,'companies','0014_auto_20171117_0415','2017-11-17 04:16:33.890744'),(32,'companies','0015_duan_tiendo','2017-11-17 04:23:10.638916'),(33,'companies','0016_auto_20171117_0504','2017-11-17 05:04:53.499197'),(34,'companies','0017_auto_20171117_0709','2017-11-17 07:09:26.161804'),(35,'companies','0018_auto_20171117_0711','2017-11-17 07:11:27.558855'),(36,'companies','0019_auto_20171117_0726','2017-11-17 07:26:23.208260'),(37,'companies','0020_auto_20171122_0153','2017-11-22 01:53:28.348761'),(38,'companies','0021_auto_20171125_1506','2017-11-25 15:06:56.350529'),(39,'companies','0022_auto_20171125_1545','2017-11-25 15:45:58.608213'),(40,'companies','0023_duan_details_address','2017-11-25 15:47:33.875723'),(41,'companies','0024_auto_20171127_0804','2017-11-27 08:04:52.429490'),(42,'companies','0025_auto_20171127_0917','2017-11-27 09:19:44.725468'),(43,'companies','0026_auto_20171127_0921','2017-11-27 09:21:06.939622'),(44,'companies','0027_typeservice_name','2017-11-27 10:15:24.248974'),(45,'companies','0028_auto_20171127_1730','2017-11-27 17:30:20.438027'),(46,'companies','0029_auto_20171128_0835','2017-11-28 08:35:19.564712'),(47,'companies','0030_auto_20171129_0217','2017-11-29 02:17:36.992277'),(48,'companies','0031_user_avatar','2017-12-05 03:41:06.248266'),(49,'companies','0032_auto_20171206_1555','2017-12-06 15:55:12.248983'),(50,'companies','0033_auto_20171206_1601','2017-12-06 16:01:31.660315'),(51,'companies','0034_auto_20171207_1511','2017-12-07 15:11:51.319483'),(52,'companies','0035_auto_20171207_1514','2017-12-07 15:14:43.092800'),(53,'companies','0036_auto_20171207_1527','2017-12-07 15:27:23.920447'),(54,'companies','0037_coin','2017-12-07 16:59:50.250930'),(55,'companies','0038_auto_20171215_1006','2017-12-15 10:06:59.930059'),(56,'companies','0038_auto_20171215_1254','2017-12-15 12:54:57.289956'),(57,'companies','0039_remove_coin_time','2017-12-15 14:15:18.115261'),(58,'companies','0040_auto_20171215_1423','2017-12-15 14:23:23.588162'),(59,'companies','0041_auto_20171216_0607','2017-12-16 06:07:49.999489'),(60,'companies','0042_history','2017-12-18 00:57:41.644688'),(61,'companies','0043_history_date','2017-12-18 01:16:16.720054'),(62,'companies','0044_auto_20171218_0942','2017-12-18 09:42:19.880331'),(63,'companies','0045_auto_20171224_0320','2017-12-24 03:20:21.823447'),(64,'companies','0046_auto_20171224_0353','2017-12-24 03:53:04.075261'),(65,'companies','0047_auto_20171227_0957','2017-12-27 09:57:47.396594'),(66,'companies','0048_auto_20171227_1122','2017-12-27 11:22:20.595316'),(67,'companies','0045_auto_20171222_0016','2017-12-31 16:09:43.451974'),(68,'companies','0049_merge_20171231_1609','2017-12-31 16:09:43.457529'),(69,'companies','0050_auto_20171231_1609','2017-12-31 16:09:43.526428');
+/*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `session_data` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `expire_date` datetime(6) NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_expire_date_a5c62663` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-01-24 16:57:10
